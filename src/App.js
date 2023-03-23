@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Cards from './components/Cards/Cards';
 import NavBar from './components/NavBar/NavBar';
 import About from './components/About/About';
 import Detail from './components/Detail/Detail';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import Form from './components/Form/Form';
+import Favorites from './components/Favorites/Favorites';
+import { removeFavoriteCharacter } from './redux/actions';
 
 const App = () => {
 	const [characters, setCharacters] = useState([]);
@@ -15,6 +18,9 @@ const App = () => {
 	const navigate = useNavigate();
 	const username = 'marco@hotmail.com';
 	const password = 'password12';
+
+	const dispatch = useDispatch();
+	const favoriteCharacters = useSelector(state => state.favoriteCharacters);
 
 	const login = (userData) => {
 		if (userData.username === username && userData.password === password) {
@@ -34,6 +40,11 @@ const App = () => {
 
 	const onClose = (id) => {
 		setCharacters(characters => characters.filter(character => character.id !== id));
+
+		const favoriteCharacter = favoriteCharacters.find(character => character.id === id);
+		if (favoriteCharacter) {
+			dispatch(removeFavoriteCharacter(id));
+		}
 	};
 
 	const onSearch = (characterId) => {
@@ -70,6 +81,7 @@ const App = () => {
 		        <Route path='/about' element={ <About /> } />
 		        <Route path='/detail/:detailId' element={ <Detail /> } />
 		        <Route path='*' element={ <NotFoundPage /> } />
+		        <Route path='/favorites' element={ <Favorites /> } />
 		    </Routes>
 		</div>
 	);
