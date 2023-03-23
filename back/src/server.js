@@ -1,6 +1,8 @@
 require('dotenv').config();
 const http = require('http');
 const characters = require('./utils/data');
+const getCharacterById = require('./controllers/getCharacterById');
+const getCharacterDetailById = require('./controllers/getCharacterDetailById');
 
 const host = process.env.HOST;
 const port = process.env.PORT;
@@ -8,16 +10,18 @@ const port = process.env.PORT;
 const server = http.createServer((req, res) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
 
-	if (req.url.includes('/api/rickandmorty/character')) {
-		const id = req.url.split('/').pop();
-		const character = characters.find(character => character.id === Number(id));
+	const id = req.url.split('/').pop();
 
-		res.writeHead(200, { 'Content-Type': 'application/json' });
-		return res.end(JSON.stringify(character));
+	if (req.url.includes('/api/rickandmorty/onsearch')) {
+		return getCharacterById(res, id);
+	}
+
+	if (req.url.includes('/api/rickandmorty/detail')) {
+		return getCharacterDetailById(res, id);
 	}
 
 	res.writeHead(404, { 'Content-Type': 'application/json' });
-	return res.end(JSON.stringify({ error: 'El personaje no está' }));
+	return res.end('La ruta no fué encontrada');
 });
 
 server.listen(port, host, () => {

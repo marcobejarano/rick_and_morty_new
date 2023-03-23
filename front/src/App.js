@@ -48,7 +48,7 @@ const App = () => {
 	};
 
 	const onSearch = (characterId) => {
-		fetch(`http://localhost:3001/api/rickandmorty/character/${characterId}`)
+		fetch(`http://localhost:3001/api/rickandmorty/onsearch/${characterId}`)
 		    .then(response => response.json())
 		    .then(data => {
 		    	if (characters.some(character => character.id === data.id)) {
