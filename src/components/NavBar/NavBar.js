@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
 
 const NavBar = (props) => {
-	const { onSearch } = props;
+	const { onSearch, logout } = props;
 
 	return (
 		<div className={ styles.navBarContainer }>
@@ -14,6 +14,7 @@ const NavBar = (props) => {
 			    <NavLink to='/about'>
 			        <button className={ styles.navBar__button }>About</button>
 			    </NavLink>
+			    <button onClick={ logout } className={ styles.navBar__button }>Logout</button>
 			</div>
 		    <SearchBar onSearch={ onSearch } />
 		</div>

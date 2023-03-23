@@ -1,0 +1,41 @@
+.formContainer {
+	inline-size: 30vw;
+	margin: 40px auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 30px;
+	color: white;
+}
+
+.form__control_warning {
+	border: 2px solid orange;
+	border-radius: 5px;
+}
+
+.form__control_warning:focus {
+	outline: 1px solid orange;
+	border-radius: 5px;
+}
+
+.form__control_danger {
+	font-weight: 500;
+	color: red;
+}
+
+.form__button {
+	padding: 7px;
+	font-weight: 700;
+	cursor: pointer;
+	background-color: skyblue;
+}
+
+.form__button:hover {
+	background-color: yellowgreen;
+	color: black;
+}
+
+.form__button:active {
+	background-color: green;
+	color: white;
+}
