@@ -1,0 +1,32 @@
+.aboutPageContainer {
+	margin: 50px 70px;
+	display: flex;
+	color: white;
+}
+
+.aboutPage__description {
+	font-size: calc(0.55em + 1vw);
+}
+
+.aboutPage__description_title {
+	font-size: calc(0.7em + 1vw);
+	font-weight: 700;
+}
+
+.aboutPage__description_info {
+	line-height: 2em;
+}
+
+.aboutPage__image {
+	max-inline-size: 100%;
+	block-size: auto;
+	margin: 0 20px;
+}
+
+@media screen and (max-width: 850px) {
+	.aboutPageContainer {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 20px;
+	}
+}

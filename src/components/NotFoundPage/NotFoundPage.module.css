@@ -1,0 +1,35 @@
+.notFoundPageContainer {
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: white;
+}
+
+.notFoundPage__button {
+	padding: 5px;
+	border: 2px solid white;
+	border-radius: 5px;
+	margin: 0px auto;
+	font-weight: 600;
+	text-decoration: none;
+	cursor: pointer;
+	background-color: blue;
+	color: white;
+}
+
+.notFoundPage__button:hover {
+	background-color: green ;
+	color: red;
+}
+
+.notFoundPage__button:active {
+	background-color: brown;
+	color: black;
+}
+
+.notFoundPage__image {
+	inline-size: 40vw;
+	border-radius: 10px;
+}

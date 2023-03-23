@@ -1,7 +1,7 @@
 import Card from '../Card/Card';
 import styles from './Cards.module.css';
 
-export default function Cards(props) {
+const Cards = (props) => {
 	const { characters, onClose } = props;
 
 	return (
@@ -19,4 +19,6 @@ export default function Cards(props) {
 		    ))}
 		</div>
 	);
-}
+};
+
+export default Cards;

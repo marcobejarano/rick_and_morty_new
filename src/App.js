@@ -1,9 +1,15 @@
 import { useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Cards from './components/Cards/Cards';
 import NavBar from './components/NavBar/NavBar';
+import About from './components/About/About';
+import Detail from './components/Detail/Detail';
+import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 
 const App = () => {
 	const [characters, setCharacters] = useState([]);
+
+	const location = useLocation();
 
 	const onClose = (id) => {
 		setCharacters(characters => characters.filter(character => character.id !== id));
@@ -31,8 +37,18 @@ const App = () => {
 
 	return (
 		<div>
-		    <NavBar onSearch={ onSearch } />
-		    <Cards characters={ characters } onClose={ onClose } />
+		    {
+		    	location.pathname !== '/' && <NavBar onSearch={ onSearch } />
+		    }
+		    <Routes>
+		        <Route 
+		            path='/home' 
+		            element={ <Cards characters={ characters } onClose={ onClose } /> }
+		        />
+		        <Route path='/about' element={ <About /> } />
+		        <Route path='/detail/:detailId' element={ <Detail /> } />
+		        <Route path='*' element={ <NotFoundPage /> } />
+		    </Routes>
 		</div>
 	);
 }

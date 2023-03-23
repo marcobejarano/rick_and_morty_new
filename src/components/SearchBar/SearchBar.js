@@ -1,7 +1,7 @@
 import styles from './SearchBar.module.css';
 import { useState } from 'react';
 
-export default function SearchBar(props) {
+const SearchBar = (props) => {
 	const [characterId, setCharacterId] = useState('');
 	const { onSearch } = props;
 
@@ -41,4 +41,6 @@ export default function SearchBar(props) {
 		    </button>
 		</form>
 	);
-}
+};
+
+export default SearchBar;
