@@ -8,26 +8,19 @@ export const rootReducer = (state = initialState, action) => {
 	    case 'GET_FAVORITE_CHARACTERS':
 	    	return {
 	    		...state,
-	    		adjustedFavoriteCharacters: [...state.favoriteCharacters]
+	    		adjustedFavoriteCharacters: action.payload
 	    	};
 	    case 'ADD_FAVORITE_CHARACTER':
 	    	return {
 	    		...state,
-	    		favoriteCharacters: [...state.favoriteCharacters, action.payload],
-	    		adjustedFavoriteCharacters: [...state.adjustedFavoriteCharacters, action.payload]
+	    		favoriteCharacters: action.payload,
+	    		adjustedFavoriteCharacters: action.payload
 	    	};
 	    case 'REMOVE_FAVORITE_CHARACTER':
-	    	const filteredFavoriteCharacters = state.favoriteCharacters.filter(
-	    		character => character.id !== action.payload
-	    	);
-	    	const filteredAdjustedFavoriteCharacters = state.adjustedFavoriteCharacters.filter(
-	    		character => character.id !== action.payload
-	    	);
-
 	    	return {
 	    		...state,
-	    		favoriteCharacters: filteredFavoriteCharacters,
-	    		adjustedFavoriteCharacters: filteredAdjustedFavoriteCharacters
+	    		favoriteCharacters: action.payload,
+	    		adjustedFavoriteCharacters: action.payload
 	    	};
 	    case 'FILTER_FAVORITE_CHARACTERS':
 	    	const filteredCopy = [...state.favoriteCharacters];
