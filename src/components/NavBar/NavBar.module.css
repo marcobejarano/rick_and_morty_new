@@ -1,0 +1,32 @@
+.navBarContainer {
+	border-radius: 10px;
+	margin-block-end: 30px;
+	display: flex;
+	justify-content: flex-end;
+	background-color: skyblue;
+}
+
+.navBar__buttons {
+	padding: 8px;
+}
+
+.navBar__button {
+	padding: 5px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 10px;
+	font-weight: 700;
+	cursor: pointer;
+	background-color: blue;
+	color: white;
+}
+
+.navBar__button:hover {
+	background-color: green ;
+	color: red;
+}
+
+.navBar__button:active {
+	background-color: brown;
+	color: black;
+}

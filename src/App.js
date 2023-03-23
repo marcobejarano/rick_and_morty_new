@@ -1,32 +1,38 @@
-import Card from './components/Card/Card';
+import { useState } from 'react';
 import Cards from './components/Cards/Cards';
-import SearchBar from './components/SearchBar/SearchBar';
-import characters, { Rick } from './data';
+import NavBar from './components/NavBar/NavBar';
 
 const App = () => {
-	const onClose = () => {
-		window.alert('Emulamos que se cierra la card');
+	const [characters, setCharacters] = useState([]);
+
+	const onClose = (id) => {
+		setCharacters(characters => characters.filter(character => character.id !== id));
 	};
 
 	const onSearch = (characterId) => {
-		window.alert(characterId);
+		fetch(`https://rickandmortyapi.com/api/character/${characterId}`)
+		    .then(response => response.json())
+		    .then(data => {
+		    	if (characters.some(character => character.id === data.id)) {
+		    		window.alert('Ese personaje ya está agregado');
+		    	} else {
+		    		if (data.name) {
+			    		setCharacters(oldCharacters => [...oldCharacters, data]);
+			    	} else {
+			    		window.alert('No hay personajes con ese Id');
+			    	}
+		    	}
+		    })
+		    .catch(err => {
+		    	console.error(err);
+		    	window.alert('Hubo un error al buscar el personaje');
+		    });
 	};
-
-	const { name, species, gender, image } = Rick;
 
 	return (
 		<div>
-		    <Card 
-		        name={ name }
-		        species={ species }
-		        gender={ gender }
-		        image={ image }
-		        onClose={ onClose } 
-		    />
-		    <hr />
+		    <NavBar onSearch={ onSearch } />
 		    <Cards characters={ characters } onClose={ onClose } />
-		    <hr />
-		    <SearchBar onSearch={ onSearch } />
 		</div>
 	);
 }
