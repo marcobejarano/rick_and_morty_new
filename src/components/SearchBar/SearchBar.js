@@ -12,6 +12,7 @@ const SearchBar = (props) => {
 	const handleSearch = (e) => {
 		e.preventDefault();
 		onSearch(characterId);
+		e.target.search.value = '';
 	};
 
 	const handleRandomSearch = () => {
