@@ -4,7 +4,7 @@ const getCharacterById = require('../controllers/getCharacterById');
 const getCharacterDetailById = require('../controllers/getCharacterDetailById');
 const { getFavorites, addFavorite, deleteFavorite } = require('../controllers/favorites'); 
 
-router.get('/onsearch/:id', getCharacterById);
+router.get('/onsearch/:characterId', getCharacterById);
 router.get('/detail/:id', getCharacterDetailById);
 router.get('/favs', getFavorites);
 router.post('/favs', addFavorite);
