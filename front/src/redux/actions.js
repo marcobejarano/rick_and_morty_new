@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getFavoriteCharacters = () => {
 	return async (dispatch) => {
 		try {
-			const response = await axios.get('http://localhost:3001/api/rickandmorty/favs/');
+			const response = await axios.get('http://localhost:3001/api/rickandmorty/favs');
 			return dispatch({
 	    		type: 'GET_FAVORITE_CHARACTERS',
 	    		payload: response.data
